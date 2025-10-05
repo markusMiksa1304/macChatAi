@@ -1,0 +1,43 @@
+[general]
+model_path = "./mlx_models/qwen2.5-7b"
+ollama_model = "qwen2.5:7b-instruct"
+embeddings_model = "sentence-transformers/all-MiniLM-L6-v2"
+chroma_dir = "./chroma_db"
+upload_docs_dir = "./upload2rag_docs"
+prompts_dir = "./prompts"
+logs_dir = "./logs/dialogs"
+memory_window = 5
+current_topic = "default"
+show_menu_after_cmd = true
+default_mode = "fetch"  # Neu: Default-Modus
+
+[mlx_tuning]
+quant = 4
+attn_mode = "flash"
+lora_path = ""
+batch_size = 1
+max_tokens = 512
+temp = 0.7
+top_p = 0.9
+top_k = 40
+vt_decoder = true
+
+[memory]
+default_type = "buffer"
+redis_url = ""
+context_isolate = true
+
+[apis]
+openai_key = "sk-..."
+tavily_key = "tvly-..."
+newsapi_key = "abc123..."
+mcp = { endpoint = "https://newsapi.org/v2/everything?q={query}&apiKey={api_key}", api_key = "abc123", method = "GET", headers = { "Authorization" = "Bearer {api_key}" } }
+
+[rag]
+chunk_size = 1000
+chunk_overlap = 200
+pdf_mode = "elements"
+repo_analyze = true
+adaptive_rag = true
+grade_threshold = 7
+use_rabbitmq = true
